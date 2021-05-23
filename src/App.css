@@ -1,38 +1,324 @@
-.App {
+:root{
+  --nav-width: 68px;
+  --first-color: #4723D9;
+  --first-color-light: #AFA5D9;
+  --white-color: #F7F6FB;
+  --normal-font-size: 1rem;
+  --z-fixed: 100;
+}
+
+*{
+  box-sizing: border-box;
+  padding: 0;
+}
+
+body{
+  position: relative;
+  font-size: var(--normal-font-size);
+}
+
+.login_container{
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  background-image: url(./Waimakariri.png);
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  justify-content: center;
+}
+
+.login_box{
+  padding: 50px;
+  border-radius: 25px;
+  background-color: var(--first-color-light);
+}
+
+.login_container button{
+  border: none;
+  background-color: var(--white-color);
+  cursor: pointer;
+  padding-top: 10px;
+  border-radius: 25px;
+  padding-bottom: 10px;
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+.home_screen{
+  /* height: 100vh; */
+  /* width: 100%; */
+  /* display: flex; */
+  /* align-items: center; */
+  /* justify-content: center; */
+}
+
+.l_navbar{
+  position: fixed;
+  top: 0;
+  left: -30%;
+  width: var(--nav-width);
+  height: 100vh;
+  background-color: var(--first-color);
+  transition: all .5s ease;
+  z-index: var(--z-fixed);
+}
+
+.l_navbar .logo_content .logo{
+  color: #fff;
+  display: flex;
+  height: 50px;
+  width: 100%;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.5s ease;
+}
+
+.l_navbar.show .logo_content .logo{
+  opacity: 1;
+  pointer-events: none;
+  width: auto;
+}
+
+.logo_content .logo i{
+  font-size: 28px;
+  margin-right: 5px;
+}
+
+.logo_content .logo .logo_name{
+  font-size: 20px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.l_navbar .logo{
+  padding-top: 10px;
+  padding-left: 6px;
+}
+
+.l_navbar #btn{
+  position: absolute;
+  color: #fff;
+  cursor: pointer;
+  top: 6px;
+  left: 50%;
+  font-size: 22px;
+  height: 50px;
+  width: 50px;
+  text-align: center;
+  line-height: 50px;
+  transform: translateX(-50%);
+}
+
+.l_navbar.show{
+  width: 15%;
+}
+
+.l_navbar.show #btn{
+  left: 90%;
+}
+
+.l_navbar ul{
+  margin-top: 20px;
+}
+
+.l_navbar ul li{
+  position: relative;
+  width: 100%;
+  margin: 0 5px;
+  list-style: none;
+  line-height: 50px;
+}
+
+.l_navbar ul li .tooltip{
+  position: absolute;
+  left: 150px;
+  top: 0;
+  transform: translate(-50% , -50%);
+  border-radius: 6px;
+  height: 35px;
+  width: 150px;
+  background: #fff;
+  line-height: 35px;
+  text-align: center;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  transition: 0s;
+  opacity: 0;
+  pointer-events: none;
+  display: block;
+}
+
+.l_navbar.show ul li .tooltip{
+  display: none;
+}
+
+.l_navbar ul li:hover .tooltip{
+  transition: all 0.5s ease;
+  opacity: 1;
+  top: 50%;
+}
+
+.l_navbar ul li .nav_link{
+  color: #fff;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  border-radius: 12px;
+  white-space: nowrap;
+  transition: all 0.4s ease;
+}
+
+.l_navbar ul li i{
+  font-size: 18px;
+  font-weight: 400;
+  height: 50px;
+  min-width: 50px;
+  line-height: 50px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
+.l_navbar .nav_name{
+  font-size: 15px;
+  font-weight: 400;
+  opacity: 0;
   pointer-events: none;
+  transition: all 0.3s ease;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.l_navbar.show .nav_name{
+  transition: 0s;
+  opacity: 1;
+  pointer-events: auto;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.l_navbar.show{
+  color: var(--white-color);
+  width: 240px;
+}
+
+.main_content_body{
+  padding-left: 0;
+  height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+}
+
+.active::before{
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 2px;
+  height: 32px;
+  background-color: var(--white-color);
+}
+
+/* CARD CSS */
+.center{
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+}
+
+/* .main{ */
+  /* height: 100vh; */
+/* } */
+
+.box{
+  width: 200px;
+  height: 200px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.288);
+  border-radius: 23px;
+  flex-direction: column;
+  background: linear-gradient(to right, var(--first-color), #4223bd);
   color: white;
+  position: relative;
+  overflow: hidden;
+  margin: 5px 5px 5px 5px;
 }
 
-.App-link {
-  color: #61dafb;
+.box img{
+  width: 75px;
+  height: 75px;
+  border-radius: 50px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.person_name{
+  margin-bottom: 2.5px;
+  font-size: 1.5rem;
+  margin-top: 9.5px;
+}
+
+.person_designation{
+  margin-top: 8px;
+}
+
+.arr_container, .cancel{
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: white;
+  bottom: 0;
+  right: 0;
+  border-radius: 23px 0 23px 0;
+  color: rgb(70, 70, 70);
+  font-size: 1.6rem;
+  cursor: pointer;
+  transition: all .4s;
+}
+
+.arr_container i{
+  transform: rotate(45deg);
+}
+
+.active_arr{
+  transform: translate(80%, 80%);
+}
+
+.left_container{
+  position: absolute;
+  background: #0f2027;
+  width: 100%;
+  height: 100%;
+  border-radius: 23px;
+  padding: 40px 0 0 20px;
+  transition: all .4s;
+}
+
+.off{
+  transform: translate(-80%, -80%) rotate(90deg);
+}
+
+.on{
+  transform: translate(0) rotate(0);
+}
+
+.left_container p{
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+}
+
+.left_container .icons{
+  font-size: 1.6rem;
+  margin-top: 10px;
+}
+
+.left_container .icons i{
+  color: #cfcfcf;
+  cursor: pointer;
+  margin-right: 10px;
+  transition: all .4s;
+}
+
+.left_container .icons i:hover{
+  color: #2c5364;
+}
+
+@media screen and (min-width: 440px){
+  .l_navbar{
+    left: 0;
   }
-  to {
-    transform: rotate(360deg);
+  .main_content_body{
+    padding-left: var(--nav-width);
   }
 }
